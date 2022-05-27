@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+
+  cf-gui:
+    image: "vaclavs/cf-gui:1.1"
+    container_name: cf-gui
+    hostname: cf-gui
+    network_mode: host    
+    restart: always
+    working_dir: /root/controlfloor_private
+    command: ./main run
+
+  cf-provider-00008101-001E09E60E00001E:
+    image: "vaclavs/cf-provider:1.1"
+    container_name: cf-provider-${IPHONE1}
+    hostname: cf-provider-${IPHONE1}
+    network_mode: host
+    privileged: true
+    depends_on:
+      - cf-gui     
+    restart: always
+    working_dir: /root/ios_remote_provider_private
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /var/run/usbmuxd:/var/run/usbmuxd
+      - ./cf-providers/config.json:/root/ios_remote_provider_private/config.json
+      - ./cf-providers/iPhone-${IPHONE1}.json:/root/ios_remote_provider_private/iPhone-${IPHONE1}.json
+    command: bash -c "./main register -overlayConfig iPhone-${IPHONE1}.json && ./main run -id ${IPHONE1} -overlayConfig iPhone-${IPHONE1}.json"
+
+  cf-provider-00008110-000E186C2E2B801E:
+    image: "vaclavs/cf-provider:1.1"
+    container_name: cf-provider-${IPHONE2}
+    hostname: cf-provider-${IPHONE2}
+    network_mode: host
+    privileged: true
+    depends_on:
+      - cf-gui     
+    restart: always
+    working_dir: /root/ios_remote_provider_private
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /var/run/usbmuxd:/var/run/usbmuxd
+      - ./cf-providers/config.json:/root/ios_remote_provider_private/config.json
+      - ./cf-providers/iPhone-${IPHONE2}.json:/root/ios_remote_provider_private/iPhone-${IPHONE2}.json
+    command: bash -c "./main register -overlayConfig iPhone-${IPHONE2}.json && ./main run -id ${IPHONE2} -overlayConfig iPhone-${IPHONE2}.json"
+

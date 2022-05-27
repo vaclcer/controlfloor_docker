@@ -1,0 +1,48 @@
+{
+    controlfloor: {
+        host: "127.0.0.1:8083",
+        username: "vaclav",
+        https: true,
+        selfSigned: true
+    },
+    cfa: {
+        devTeamOu: "CBQ9NU9KG4",
+        bundleIdPrefix: "com.dryark",
+        runner: {
+            buildStyle: "Automatic",
+            provisioningProfile: ""
+        }
+    },
+    wda: {
+        devTeamOu: "CBQ9NU9KG4",
+        bundleIdPrefix: "com.dryark",
+        runner: {
+            buildStyle: "Automatic",
+            provisioningProfile: ""
+        }
+    },
+    vidapp: {
+        devTeamOu: "CBQ9NU9KG4",
+        bundleIdPrefix: "com.dryark",
+    },
+    devices: [
+                {
+                udid: "00008101-001E09E60E00001E",
+                uiWidth: 428,
+                uiHeight: 926,
+                controlCenterMethod: "topDown",
+                httpPort: 8101,
+                portRange: "8200-8299"
+            },
+	    {
+		udid: "00008110-000E186C2E2B801E",
+		uiWidth: 428,
+		uiHeight: 926,
+		controlCenterMethod: "topDown",
+		httpPort: 8102,
+		portRange: "8300-8399"
+	    }
+
+        ]
+}
+

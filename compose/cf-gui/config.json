@@ -1,0 +1,12 @@
+{
+   listen: ":8084",
+   https: true,
+   auth: {
+      type: "mod"
+   },
+   video: {
+      maxHeight: 1000
+   },
+   notes: [],
+   theme: "simple-island"
+}
