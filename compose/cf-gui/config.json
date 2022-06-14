@@ -1,5 +1,5 @@
 {
-   listen: ":8084",
+   listen: ":8083",
    https: true,
    auth: {
       type: "mod"
@@ -8,5 +8,6 @@
       maxHeight: 1000
    },
    notes: [],
-   theme: "simple-island"
+   theme: "simple"
+   //theme: "simple-island"
 }
